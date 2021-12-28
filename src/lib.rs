@@ -1,7 +1,7 @@
 pub mod first;
 pub mod second;
 pub mod third;
-
+pub mod fourth;
 
 #[cfg(test)]
 mod first_tests {
@@ -96,6 +96,36 @@ mod second_tests {
         assert_eq!(k.next(), Some(&mut 5));
         assert_eq!(k.next(), Some(&mut 2));
         assert_eq!(k.next(), Some(&mut 1));
+    }
+
+}
+
+
+#[cfg(test)]
+mod third_tests {
+
+    use std::rc::Rc;
+    use crate::third::List;
+
+    #[test]
+    fn third_works() {
+        let mut l = List::new();
+        assert_eq!(l.head(), None);
+        // assert_eq!(l.tail(), None);
+        l.prepend(1);
+        // assert_eq!(l.head(), Some(&1));
+
+    }
+
+    #[test]
+    fn iter() {
+        let mut l = List::new()
+            .prepend(1)
+            .prepend(2);
+        let mut i = l.iter();
+        assert_eq!(i.next(), Some(&2));
+        assert_eq!(i.next(), Some(&1));
+        assert_eq!(i.next(), None);
     }
 
 }
